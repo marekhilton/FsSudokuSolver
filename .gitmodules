@@ -1,0 +1,3 @@
+[submodule "FsConstraintSolver"]
+	path = FsConstraintSolver
+	url = https://github.com/mhilton2013/FsConstraintSolver.git
