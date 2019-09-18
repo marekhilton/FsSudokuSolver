@@ -24,6 +24,7 @@ type Event =
     | Solve
     | Reset
     | StartEdit of Sudoku.CellPos
+    | EndEdit
 
 let init() : State =
     {table = Sudoku.empty
@@ -41,11 +42,10 @@ let update (msg:Event) (state:State) =
         | false , _ -> {state
                         with table = Map.add pos Sudoku.Empty state.table}
         | _ -> state
-    | Solve -> {state
-                with table = Sudoku.solve state.table}
+    | Solve -> {state with table = Sudoku.solve state.table}
     | Reset -> init()
-    | StartEdit pos -> {state
-                        with active = Some pos}
+    | StartEdit pos -> {state with active = Some pos}
+    | EndEdit -> {state with active = None}
 
 // VIEW (rendered with React)
 
@@ -76,7 +76,9 @@ let renderEditor dispatch pos value =
           Style [Width "20px"
                  TextAlign TextAlignOptions.Center]
           AutoFocus true
-          OnChange (fun e -> dispatch (SetCell(pos,e.Value)))
+          OnChange (fun e ->
+                        dispatch (SetCell(pos,e.Value))
+                        dispatch EndEdit)
           Value value ]
     ]
 
