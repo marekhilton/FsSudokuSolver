@@ -1,13 +1,20 @@
 <!doctype html>
 <html>
 <head>
-  <title>Fable</title>
+  <title>Sudoku Solver</title>
   <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="fable.ico" />
 </head>
 <body>
-    <div id="elmish-app" class="elmish-app"></div>
-    <script src="bundle.js"></script>
+  <header> <h1>Sudoku Solver</h1> </header>
+  <div id="elmish-app" class="elmish-app"></div>
+  <script src="bundle.js"></script>
+  <h4>Instructions</h4>
+  <ol>
+    <li> Enter values between 1 and 9 into cells by clicking on them and typing.
+    <li> Click <b>solve</b> and all blank cells will be filled in with a possible solution if it exists.
+    <li> Click <b>reset</b> to reset all the cells to blank.
+  </ol>
 </body>
 </html>
